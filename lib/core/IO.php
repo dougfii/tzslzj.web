@@ -78,7 +78,10 @@ class IO
 	// 得到文件基本名称
 	public static function GetFileBaseName($filename)
 	{
-		return preg_replace ( '/^.+[\\\\\\/]/', '', $filename );
+        //return preg_replace ( '/^.+[\\\\\\/]/', '', $filename );
+        return preg_replace_callback('/^.+[\\\\\\/]/', function () {
+            return '';
+        }, $filename);
 	}
 
 	// 得到文件名称（不带扩展名）
